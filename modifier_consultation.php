@@ -1,7 +1,7 @@
 <?php
 // modifier_commande.php
 include "connexion.php";
-require "auth_check.php";  // ← Ces 2 lignes EN PREMIER, avant tout HTML
+require "auth_check.php";  
 
 // POST : traitement
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

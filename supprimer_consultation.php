@@ -1,7 +1,6 @@
 <?php
-// supprimer_consultation.php
 include "connexion.php";
-require "auth_check.php";  // ← Ces 2 lignes EN PREMIER, avant tout HTML
+require "auth_check.php";  
 $id = intval($_GET['id'] ?? 0);
 $stmt = $pdo->prepare("DELETE FROM consultations WHERE consultation_id = ?");
 $stmt->execute([$id]);

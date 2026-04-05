@@ -1,7 +1,7 @@
 <?php
  include "connexion.php";
 
-require "auth_check.php";  // ← Ces 2 lignes EN PREMIER, avant tout HTML
+require "auth_check.php"; 
 ?>
 
 <!DOCTYPE html>

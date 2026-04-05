@@ -1,7 +1,6 @@
 <?php
-// affecter_serveur.php — Affecter un serveur disponible à une commande en attente
 include "connexion.php";
-require "auth_check.php";  // ← Ces 2 lignes EN PREMIER, avant tout HTML
+require "auth_check.php";  
 
 // POST : traitement affectation
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

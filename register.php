@@ -1,7 +1,6 @@
 <?php
 require "connexion.php";
 
- // ← Ces 2 lignes EN PREMIER, avant tout HTML
 
 $erreur  = "";
 $message = "";

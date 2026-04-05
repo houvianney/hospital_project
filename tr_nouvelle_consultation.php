@@ -1,7 +1,6 @@
 <?php
-// tr_nouvelle_consultation.php
 include "connexion.php";
-require "auth_check.php";  // ← Ces 2 lignes EN PREMIER, avant tout HTML
+require "auth_check.php";  
 if ($_SERVER["REQUEST_METHOD"] !== "POST") { header("Location: nouvelle_consultation.php"); exit; }
 
 $nom        = trim($_POST['nom']);
