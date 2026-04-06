@@ -123,6 +123,7 @@ $rows = $result->fetchAll();
                     default                   => 'badge-servie'
                 };
             ?>
+            
             <tr>
                 <td class="text-muted">#<?= $row['consultation_id'] ?></td>
                 
