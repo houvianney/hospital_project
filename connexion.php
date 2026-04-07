@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "gestion_medicale_db";
+$db   = "zem_project";
 $dsn  = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
 try {

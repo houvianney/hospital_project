@@ -3,7 +3,7 @@ require "connexion.php";
 
 // Si déjà connecté, rediriger
 if (isset($_SESSION["user_id"])) {
-    header("Location: index.php");
+    header("Location: index_conducteur.php");
     exit();
 }
 
@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($user && password_verify($mdp, $user["mot_de_passe"])) {
             // Connexion réussie — créer la session
             $_SESSION["user_id"]  = $user["utilisateur_id"];
-            $_SESSION["user_nom"] = $user["nom"] . " " . $user["prenom"];
+            $_SESSION["user_nom"] = $user["nom"] . " " . ($user["prenoms"] ?? '');
             $_SESSION["user_role"] = $user["role"];
 
-            header("Location: index.php");
+            header("Location: index_conducteur.php");
             exit();
         } else {
             $erreur = "Email ou mot de passe incorrect.";

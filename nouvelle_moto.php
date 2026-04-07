@@ -1,14 +1,14 @@
 <?php
  include "connexion.php";
 
-require "auth_check.php"; 
+// require "auth_check.php"; 
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Nouvelle consultation</title>
+    <title>Nouvelle moto</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background:#f8fafc; font-size:13px; }
@@ -29,35 +29,36 @@ require "auth_check.php";
 
     <div class="card">
         <div class="card-header py-3">
-            <h5 class="mb-0">➕ Nouvelle consultation</h5>
+            <h5 class="mb-0">➕ Nouvelle moto</h5>
         </div>
         <div class="card-body p-4">
-            <form action="tr_nouvelle_consultation.php" method="POST" enctype="multipart/form-data">
+            <form action="tr_nouvelle_moto.php" method="POST" enctype="multipart/form-data">
 
                 <div class="row g-3 mb-3">
                     <div class="col-md-4">
-                        <label class="form-label">nom du patient <span class="text-danger">*</span></label>
+                        <label class="form-label">Immatriculation <span class="text-danger">*</span></label>
                         <input type="text" class="form-control form-control-sm"
-                               name="nom"  required>
+                               name="ima"  required>
                     </div>
                     <div class="col-md-8">
-                        <label class="form-label">Motif<span class="text-danger">*</span></label>
+                        <label class="form-label">Marque<span class="text-danger">*</span></label>
                         <input type="text" class="form-control form-control-sm"
-                               name="motif" placeholder="---" required>
+                               name="marque" placeholder="---" required>
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
-                        <label class="form-label">Date et heure<span class="text-danger">*</span></label>
-                        <input type="datetime-local" class="form-control form-control-sm"
-                               name="date_heure" required>
+                        <label class="form-label">Année d'acquisition<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control form-control-sm"
+                               name="annee" required>
                     </div>
+                    
                 </div>
                 <div class="d-flex gap-2">
                     <button type="submit" name="submit" class="btn btn-primary btn-sm px-4">
                         💾 Enregistrer
                     </button>
-                    <a href="index.php" class="btn btn-secondary btn-sm">Annuler</a>
+                    <a href="index_moto.php" class="btn btn-secondary btn-sm">Annuler</a>
                 </div>
             </form>
         </div>

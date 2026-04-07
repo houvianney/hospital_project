@@ -21,7 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erreur = "Le mot de passe doit contenir au moins 6 caractères.";
     } elseif ($mdp !== $mdp_conf) {
         $erreur = "Les mots de passe ne correspondent pas.";
+    } elseif (!in_array($_POST['role'] ?? '', ['gestionnaire', 'superviseur'], true)) {
+        $erreur = "Veuillez choisir un rôle valide.";
     } else {
+        $role = $_POST['role'];
         // Vérifier si email déjà utilisé
         $stmt = $pdo->prepare("SELECT utilisateur_id FROM utilisateurs WHERE email = ?");
         $stmt->execute([$email]);
@@ -34,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Insérer en base
             $stmt = $pdo->prepare(
-                "INSERT INTO utilisateurs (nom, prenoms, email, mot_de_passe)
-                 VALUES (?, ?, ?, ?)"
+                "INSERT INTO utilisateurs (nom, prenoms, email, mot_de_passe, role)
+                 VALUES (?, ?, ?, ?, ?)"
             );
-            $stmt->execute([$nom, $prenom, $email, $hash]);
+            $stmt->execute([$nom, $prenom, $email, $hash, $role]);
 
             $message = "Compte créé avec succès ! Vous pouvez vous connecter.";
         }
@@ -101,6 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <input type="email" name="email" class="form-control"
                            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
                            placeholder="exemple@email.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Rôle *</label>
+                    <select name="role" class="form-select" required>
+                        <option value="">-- Choisir un rôle --</option>
+                        <option value="gestionnaire" <?= (($_POST['role'] ?? '') === 'gestionnaire') ? 'selected' : '' ?>>Gestionnaire</option>
+                        <option value="superviseur" <?= (($_POST['role'] ?? '') === 'superviseur') ? 'selected' : '' ?>>Superviseur</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">
